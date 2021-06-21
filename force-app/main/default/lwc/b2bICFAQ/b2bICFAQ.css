@@ -1,0 +1,22 @@
+.list-default-styling {
+    list-style: disc;
+    padding: 14px;
+}
+
+.faq-page {
+    padding: 50px;
+}
+
+.faq-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-card {
+    padding-bottom: 40px;
+}
+
+.slds-text-heading_small {
+    font-size: 2rem;
+}
