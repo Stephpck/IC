@@ -22,4 +22,11 @@ public with sharing class LightningForgotPasswordControllerTest {
   LightningForgotPasswordController controller = new LightningForgotPasswordController();
   System.assertNotEquals(controller, null);
  }
+
+  /* Verifies that ForgotPasswordController handles invalid experienceId appropriately */
+  @IsTest
+  static void testLightningForgotPasswordControllerInvalidExperienceId() {
+   System.assertEquals(LightningForgotPasswordController.setExperienceId('12345'), 'This method can be invoked only from within a community.');
+   System.assertEquals(LightningForgotPasswordController.setExperienceId(null), null);
+  }
 }

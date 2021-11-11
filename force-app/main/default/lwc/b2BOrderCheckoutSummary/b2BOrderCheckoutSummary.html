@@ -1,0 +1,85 @@
+<template>
+    <header class="slds-p-around_x-small slds-text-title_caps">
+      <h2>Checkout Summary</h2>
+    </header>
+    <template if:true={showError}>
+      <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+        <span class="slds-assistive-text">error</span>
+        <h2>An error has occured. Please try again later.</h2>
+      </div>
+    </template>
+    <template if:true={showSummary}>
+      <div class="slds-box">
+        <div class="body slds-text-body_regular slds-p-vertical_x-small row">
+          <lightning-layout horizontal-align="spread">
+            <lightning-layout-item> Subtotal: </lightning-layout-item>
+            <lightning-layout-item>
+              <div class="slds-text-align_right">
+                <lightning-formatted-number
+                  value={orderSummary.TotalAdjustedProductAmount}
+                  format-style="currency"
+                ></lightning-formatted-number>
+              </div>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div if:true={showFedEx} class="body slds-text-body_regular slds-p-vertical_x-small row">
+          <lightning-layout horizontal-align="spread">
+            <lightning-layout-item> Estimated FedEx Shipping: </lightning-layout-item>
+            <lightning-layout-item>
+              <div class="slds-text-align_right">
+                <lightning-formatted-number
+                  value={shippingCharge}
+                  format-style="currency"
+                ></lightning-formatted-number>
+              </div>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div if:true={showFreight} class="body slds-text-body_regular slds-p-vertical_x-small row">
+            <lightning-layout horizontal-align="spread">
+              <lightning-layout-item> Freight Shipping: </lightning-layout-item>
+              <lightning-layout-item>
+                <div class="slds-text-align_right">
+                  *TBD
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </div>
+        <div class="body slds-text-body_regular slds-p-vertical_x-small row">
+          <lightning-layout horizontal-align="spread">
+            <lightning-layout-item> Estimated Tax: </lightning-layout-item>
+            <lightning-layout-item>
+              <div class="slds-text-align_right">
+                <lightning-formatted-number
+                  value={orderSummary.TotalAdjustedProductTaxAmount}
+                  format-style="currency"
+                ></lightning-formatted-number>
+              </div>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div class="total-price">
+          <div class="slds-border_top slds-text-body_regular slds-p-vertical_x-small row">
+            <lightning-layout horizontal-align="spread">
+              <lightning-layout-item> Total: </lightning-layout-item>
+              <lightning-layout-item>
+                <div class="slds-text-align_right">
+                  <lightning-formatted-number
+                    value={grandTotalAmount}
+                    format-style="currency"
+                  ></lightning-formatted-number>
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout if:true={showFreight} horizontal-align="spread" class="slds-m-top_x-small">
+                <lightning-layout-item>
+                    <span><i>*Freight costs to be determined at a later date.</i></span>
+                </lightning-layout-item>
+              </lightning-layout>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+  

@@ -27,4 +27,15 @@ public with sharing class LightningLoginFormControllerTest {
   Auth.AuthConfiguration authConfig = LightningLoginFormController.getAuthConfig();
   System.assertNotEquals(null, authConfig);
  }
+
+ @IsTest
+ static void testExperienceId() {
+  System.assertEquals(LightningLoginFormController.setExperienceId('12345'), 'This method can be invoked only from within a community.');
+  System.assertEquals(LightningLoginFormController.setExperienceId(null), null);
+ }
+
+ @IsTest
+ static void testLogin() {
+  System.assertEquals(LightningLoginFormController.login(null, null, null), null);
+ }
 }

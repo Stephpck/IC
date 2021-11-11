@@ -76,6 +76,13 @@ public with sharing class LightningSelfRegisterControllerTest {
   System.assertNotEquals(controller, null);
  }
 
+/* Verifies that LightningSelfRegisterController handles invalid experienceId appropriately */
+@IsTest
+static void testLightningSelfRegisterControllerInvalidExperienceId() {
+ System.assertEquals(LightningSelfRegisterController.setExperienceId('12345'), 'This method can be invoked only from within a community.');
+ System.assertEquals(LightningSelfRegisterController.setExperienceId(null), null);
+}
+
  /* Helper method to initialize the parameters required for SelfRegistration. */
  private static Map < String, String > initializeParams() {
   Map < String, String > paramsMap = new Map < String, String > ();
